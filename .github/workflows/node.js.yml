@@ -1,0 +1,28 @@
+name: Node.js Application
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-run:
+    runs-on: ubuntu-latest
+    steps:
+      # Checa o código no repositório
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      # Configura o Node.js
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16' # Ou outra versão do Node.js
+
+      # Instala dependências
+      - name: Install dependencies
+        run: npm install
+
+      # Roda a aplicação
+      - name: Run the application
+        run: node app.js
